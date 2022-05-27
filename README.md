@@ -16,8 +16,9 @@
 
 ## Реализованные паттерны:
   1. Repository
-  2. Singleton
+  2. UnitOfWork
   3. Command
+  4. Singleton
 
 ## Как это спиздить:
   1. Создать БД через прикреплённый скрипт и поменять строку подключения в файле EFCore/DBContext.cs
