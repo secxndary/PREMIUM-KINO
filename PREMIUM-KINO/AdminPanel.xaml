@@ -1,0 +1,215 @@
+﻿<Page x:Class="PREMIUM_KINO.AdminPanel"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PREMIUM_KINO"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AdminPanel">
+
+    <Grid Name="mainGrid" Style="{DynamicResource BlackAndWhite}">
+        <Grid.RowDefinitions>
+            <!--<RowDefinition Height="60"></RowDefinition>-->
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="3.5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+
+        <!--Боковое меню-->
+        <Grid Name="leftMenu"
+              Grid.Row="1" Grid.Column="0"
+              Style="{DynamicResource gradientBack}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+            
+
+            <!--Поиск-->
+            <TextBlock Text="{DynamicResource search}" 
+                       FontSize="14"
+                       HorizontalAlignment="Center"
+                       Margin="3" 
+                       Foreground="White"/>
+
+            <TextBox Width="140" Height="25" x:Name="searchBox"
+                     Grid.Row="0" VerticalAlignment="Top" 
+                     Margin="0 27 0 0"
+                     Padding="2 2 2 0"
+                     TextChanged="searchBox_TextChanged">
+            </TextBox>
+           
+
+            <Button Name="addButton" Grid.Row="1" Width="140"
+                    Height="30" Click="addButton_Click" 
+                    Template="{DynamicResource templateAdd}">
+            </Button>
+
+
+            <Button Name="redactButton" Grid.Row="2" Width="140"
+                    Height="30" Click="redactButton_Click" 
+                    Template="{DynamicResource templateRedact}">
+            </Button>
+
+            <Button Name="addScheduleButton" Grid.Row="3" Width="140"
+                    Height="30" Click="addScheduleButton_Click" 
+                    Template="{DynamicResource templateAddSchedule}">
+            </Button>
+
+            <Button Name="deleteButton" Grid.Row="4" Width="140"
+                    Height="30" Click="deleteButton_Click"
+                    Template="{DynamicResource templateDel}">
+            </Button>
+
+            <Button Name="showButton" Grid.Row="5" Width="140"
+                    Height="30" Click="showButton_Click"
+                    Template="{DynamicResource templateAll}">
+            </Button>
+
+
+            <TextBlock Text="{DynamicResource filter}" 
+                       FontSize="14"
+                       HorizontalAlignment="Center"
+                       Margin="0"
+                       Grid.Row="6"
+                       Foreground="White"/>
+
+
+            <ComboBox Name="comboBoxFilterSelect"
+                Grid.Row="6" Grid.Column="0"
+                HorizontalAlignment="Center" VerticalAlignment="Top"
+                Margin="0 25 0 0"
+                Width="130" Height="25"
+                Style="{DynamicResource defCombo}"
+                SelectionChanged="comboBoxFilterSelect_SelectionChanged">
+                <ComboBoxItem Content="{DynamicResource genAll}" 
+                              Style="{DynamicResource defItem}" />
+                <ComboBoxItem Content="{DynamicResource genAction}" 
+                              Style="{DynamicResource defItem}" />
+                <ComboBoxItem Content="{DynamicResource genComedy}"                              
+                              Style="{DynamicResource defItem}" />
+                <ComboBoxItem Content="{DynamicResource genDrama}"
+                              Style="{DynamicResource defItem}" />
+                <ComboBoxItem Content="{DynamicResource genMelodrama}"                             
+                              Style="{DynamicResource defItem}" />
+                <ComboBoxItem Content="{DynamicResource genFantastic}"                             
+                              Style="{DynamicResource defItem}" />
+                <ComboBoxItem Content="{DynamicResource genFantasy}"                             
+                              Style="{DynamicResource defItem}" />
+                <ComboBoxItem Content="{DynamicResource genThriller}"                             
+                              Style="{DynamicResource defItem}" />
+                <ComboBoxItem Content="{DynamicResource genHorror}"                             
+                              Style="{DynamicResource defItem}" />
+                <ComboBoxItem Content="{DynamicResource genWar}"                             
+                              Style="{DynamicResource defItem}" />
+                <ComboBoxItem Content="{DynamicResource genKids}"                             
+                              Style="{DynamicResource defItem}" />
+            </ComboBox>
+
+        </Grid>
+
+
+
+        <ListView Name="tableView" Grid.Row="1" Grid.Column="1"
+                  Background="Transparent"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn  Width="130" Header="{DynamicResource filmName}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Title}" 
+                                           TextWrapping="Wrap" 
+                                           FontSize="16"
+                                           Foreground="#99aab5" 
+                                           Margin="10,0,0,0"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    
+                    <GridViewColumn  Width="125" Header="{DynamicResource director}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Director}" 
+                                           TextWrapping="Wrap" 
+                                           FontSize="16"
+                                           Foreground="#99aab5" 
+                                           Margin="10,0,0,0"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+
+                    <GridViewColumn  Width="170" Header="{DynamicResource genre}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Genre}" 
+                                           TextWrapping="Wrap" 
+                                           FontSize="16"
+                                           Foreground="#99aab5" 
+                                           Margin="10,0,0,0"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+
+
+                    <GridViewColumn  Width="90" Header="{DynamicResource duration}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Duration}" 
+                                           TextWrapping="Wrap" 
+                                           FontSize="16"
+                                           Foreground="#99aab5" 
+                                           Margin="10,0,0,0"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+
+
+                    <GridViewColumn  Width="90" Header="{DynamicResource rating}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Rating}" 
+                                           TextWrapping="Wrap" 
+                                           FontSize="16"
+                                           Foreground="#99aab5" 
+                                           Margin="10,0,0,0"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+
+
+                    <GridViewColumn  Width="150" Header="{DynamicResource photo}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Photo}" 
+                                       Width="50"
+                                       Height="50"
+                                       Margin="30 0 0 0"
+                                       HorizontalAlignment="Center"></Image>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page>

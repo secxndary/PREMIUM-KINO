@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>PREMIUM_KINO</RootNamespace>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\app-icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\back-orange.jpg" />
+    <None Remove="Resources\back.jpg" />
+    <None Remove="Resources\dark-theme.png" />
+    <None Remove="Resources\dune.jpg" />
+    <None Remove="Resources\fight-club.jpg" />
+    <None Remove="Resources\green-mile.jpg" />
+    <None Remove="Resources\knocking.jpg" />
+    <None Remove="Resources\logo_black.png" />
+    <None Remove="Resources\logo_png_crop.png" />
+    <None Remove="Resources\once-time-hollywood.jpg" />
+    <None Remove="Resources\pulp-fiction.jpg" />
+    <None Remove="Resources\reservoir-dogs.jpg" />
+    <None Remove="Resources\russia.png" />
+    <None Remove="Resources\shawshank.jpg" />
+    <None Remove="Resources\ticket.jpg" />
+    <None Remove="Resources\united-states.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\app-icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevExpressMvvm" Version="21.1.5" />
+    <PackageReference Include="EntityFramework" Version="6.2.0" />
+    <PackageReference Include="EntityFramework.ru" Version="6.2.0" />
+    <PackageReference Include="Fody" Version="6.6.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1210.39" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\back-orange.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\back.jpg" />
+    <Resource Include="Resources\dark-theme.png" />
+    <Resource Include="Resources\dune.jpg" />
+    <Resource Include="Resources\fight-club.jpg" />
+    <Resource Include="Resources\green-mile.jpg" />
+    <Resource Include="Resources\knocking.jpg" />
+    <Resource Include="Resources\logo_black.png" />
+    <Resource Include="Resources\logo_png_crop.png" />
+    <Resource Include="Resources\once-time-hollywood.jpg" />
+    <Resource Include="Resources\pulp-fiction.jpg" />
+    <Resource Include="Resources\reservoir-dogs.jpg" />
+    <Resource Include="Resources\russia.png" />
+    <Resource Include="Resources\shawshank.jpg" />
+    <Resource Include="Resources\ticket.jpg" />
+    <Resource Include="Resources\united-states.png" />
+    <Resource Include="Styles\arrow.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

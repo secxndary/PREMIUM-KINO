@@ -1,0 +1,194 @@
+﻿<Window x:Class="PREMIUM_KINO.AddingFilm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:PREMIUM_KINO="clr-namespace:PREMIUM_KINO"
+        xmlns:local="clr-namespace:PREMIUM_KINO"
+        mc:Ignorable="d"
+        Title="ПРЕМИУМ КИНО" Height="450" Width="400"
+        MinHeight="450" MinWidth="300"
+        WindowStartupLocation="Manual" Top="170" Left="400">
+
+
+    <Grid Name="addingGrid" Style="{DynamicResource blackBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+        <Button Width="0" Height="0" IsCancel="True"
+                Command="{Binding escapeAddCommand}">
+            <Button.DataContext>
+                <local:ClosingViewModel></local:ClosingViewModel>
+            </Button.DataContext>
+        </Button>
+
+
+
+        <!--Надпись "Добавить фильм"-->
+        <TextBlock 
+            Grid.Row="0" Text="{DynamicResource addingFilm}" 
+            HorizontalAlignment="Center" FontSize="20"
+            VerticalAlignment="Center"
+            Grid.ColumnSpan="2"
+            Style="{DynamicResource text}">
+        </TextBlock>
+
+        
+        <!--Название-->
+        <TextBlock
+            Grid.Row="1" Text="{DynamicResource filmName}"
+            HorizontalAlignment="Left" Margin="10 5 0 0"
+            Style="{DynamicResource text}">
+        </TextBlock>
+        <TextBox
+            Grid.Row="1" Height="20" Width="100"
+            HorizontalAlignment="Left" Margin="10 10 0 0"
+            Name="filmName"
+            Style="{DynamicResource searchTextBoxMain}">
+        </TextBox>
+
+
+        <!--<PREMIUM_KINO:ControlledInput Grid.Row="1" Grid.Column="0"
+                                    Margin="5 0 30 0" x:Name="filmName" 
+                                    DataContext="{DynamicResource titleDC}">
+        </PREMIUM_KINO:ControlledInput>
+
+        
+        
+        <PREMIUM_KINO:ControlledInput Grid.Row="2" Grid.Column="0"
+                                    Margin="5 0 30 0" x:Name="filmDirector" 
+                                    DataContext="{DynamicResource directorDC}">
+        </PREMIUM_KINO:ControlledInput>-->
+
+
+        
+        
+        <!--Режиссер-->
+        <TextBlock
+            Grid.Row="2" Text="{DynamicResource director}"
+            HorizontalAlignment="Left" Margin="10 5 0 0"
+            Style="{DynamicResource text}">
+        </TextBlock>
+        <TextBox
+            Grid.Row="2" Height="20" Width="100"
+            HorizontalAlignment="Left" Margin="10 10 0 0"
+            Name="filmDirector"
+            Style="{DynamicResource searchTextBoxMain}">
+        </TextBox>
+
+
+        <!--Жанр-->
+        <TextBlock
+            Grid.Row="3" Text="{DynamicResource genre}"
+            HorizontalAlignment="Left" Margin="10 5 0 0"
+            Style="{DynamicResource text}"
+            FontSize="13">
+        </TextBlock>
+        <ComboBox 
+            Grid.Row="3" Height="22" Width="110"
+            HorizontalAlignment="Left" Margin="10 10 0 0"
+            Name="genre" IsEditable="True">
+            <ComboBoxItem Content="{DynamicResource genAction}" />
+            <ComboBoxItem Content="{DynamicResource genComedy}" />
+            <ComboBoxItem Content="{DynamicResource genDrama}" />
+            <ComboBoxItem Content="{DynamicResource genMelodrama}" />
+            <ComboBoxItem Content="{DynamicResource genFantastic}" />
+            <ComboBoxItem Content="{DynamicResource genFantasy}" />
+            <ComboBoxItem Content="{DynamicResource genThriller}" />
+            <ComboBoxItem Content="{DynamicResource genHorror}" />
+            <ComboBoxItem Content="{DynamicResource genWar}" />
+            <ComboBoxItem Content="{DynamicResource genKids}" />
+        </ComboBox>
+
+
+        <!--Длительность-->
+        <Grid Name="durationGrid" Grid.Row="4" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <TextBlock
+                Grid.Row="0" Text="{DynamicResource duration}"
+                HorizontalAlignment="Left" Margin="10 10 0 0"
+                Style="{DynamicResource text}"
+                FontSize="13">
+            </TextBlock>
+            <TextBox
+                Grid.Row="1" Height="20" Width="80"
+                HorizontalAlignment="Left" Margin="10 0 0 10"
+                Name="duration" MaxLength="3"
+                Style="{DynamicResource searchTextBoxMain}">
+            </TextBox>
+            <TextBlock 
+                Name="minutes" Text="{DynamicResource minutes}" 
+                Grid.Row="1" Grid.Column="1"
+                Margin="0 4 0 0" HorizontalAlignment="Left"
+                FontSize="13" Style="{DynamicResource text}"> 
+            </TextBlock>
+        </Grid>
+
+
+        <!--Возрастной рейтинг-->
+        <TextBlock
+            Grid.Row="5" Text="{DynamicResource rating}"
+            HorizontalAlignment="Left" Margin="10 5 0 0"
+            Style="{DynamicResource text}">
+        </TextBlock>
+        <TextBox
+            Grid.Row="5" Height="20" Width="100"
+            HorizontalAlignment="Left" Margin="10 10 0 0"
+            Name="rating"
+            Style="{DynamicResource searchTextBoxMain}">
+        </TextBox>
+
+
+
+        <!--Фото-->
+        <Button Name="addPhotoButton" Grid.Row="1" Grid.Column="1" 
+                Width="130" Height="34" Content="{DynamicResource addPhotoButton}"
+                Click="addPhotoButton_Click" 
+                Style="{DynamicResource buttonUI}" FontWeight="DemiBold"
+                >
+        </Button>
+        <Image Name="preview" 
+               Grid.Column="1" Grid.Row="2" Grid.RowSpan="4"
+               MinHeight="170" MinWidth="100"
+               HorizontalAlignment="Center"
+               Margin="10"/>
+
+
+        <!--Кнопка добавления-->
+        <Button Grid.Row="6" Name="addFilmButton" Width="110" 
+                Height="34" Content="{DynamicResource addFilmButton}"
+                Click="addFilmButton_Click" FontWeight="DemiBold"
+                Style="{DynamicResource buttonUI}" Margin="30 0 0 0">
+        </Button>
+
+        
+        <!--Кнопка очистки-->
+        <Button Grid.Row="7" Name="deleteButton" 
+                Grid.Column="1" Width="130" 
+                Height="34" Content="{DynamicResource deleteButton}"
+                Click="deleteButton_Click" Style="{DynamicResource buttonUI}"
+                FontWeight="DemiBold">
+        </Button>
+
+    </Grid>
+</Window>

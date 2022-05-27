@@ -1,0 +1,20 @@
+﻿PREMIUM-KINO
+1.0.0.0
+
+winexe
+C#
+.cs
+C:\Users\valda\source\repos\semester #4\OOP_Labs\PREMIUM-KINO\PREMIUM-KINO\obj\Release\net6.0-windows\
+PREMIUM_KINO
+none
+false
+TRACE;RELEASE;NET;NET6_0;NETCOREAPP
+C:\Users\valda\source\repos\semester #4\OOP_Labs\PREMIUM-KINO\PREMIUM-KINO\App.xaml
+182083695568
+1-896743894
+29201541590
+2161691942986
+AboutUs.xaml;AddingFilm.xaml;AddSchedule.xaml;AdminPanel.xaml;Authorization.xaml;Dictionaries\EnglishDictionary.xaml;Dictionaries\RussianDictionary.xaml;Login.xaml;MainFrame.xaml;MainWindow.xaml;PersonalAccount.xaml;RedactingFilm.xaml;Registration.xaml;ReserveTicket.xaml;ReserveTicketForm.xaml;SetRating.xaml;Styles\BlackTheme.xaml;Styles\WhiteTheme.xaml;
+
+False
+

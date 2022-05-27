@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\Users\valda\source\repos\semester #4\OOP_Labs\PREMIUM-KINO\PREMIUM-KINO\Properties\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="AboutUs.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SetRating.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="AboutUs.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddingFilm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddSchedule.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminPanel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Authorization.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dictionaries\EnglishDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dictionaries\RussianDictionary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Login.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainFrame.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PersonalAccount.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="RedactingFilm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Registration.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ReserveTicket.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ReserveTicketForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SetRating.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\BlackTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Styles\WhiteTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
