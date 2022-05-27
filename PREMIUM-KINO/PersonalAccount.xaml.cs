@@ -9,25 +9,25 @@ namespace PREMIUM_KINO
     public partial class PersonalAccount : Page
     {
         private Users userSignedIn;
-        private Repo context;
+        private UnitOfWork context;
 
 
         public PersonalAccount()
         {
             InitializeComponent();
-            context = new Repo();
+            context = new UnitOfWork();
             userSignedIn = Application.Current.Properties["userSignedIn"] as Users;
             DataContext = userSignedIn;
             if (userSignedIn.Role != 0)
             {
                 adminListView.Visibility = Visibility.Hidden;
-                listViewOrders.ItemsSource = context.GetUserOrders(userSignedIn);
+                listViewOrders.ItemsSource = context.OrdersRepo.GetUserOrders(userSignedIn);
 
             }
             else
             {
                 listViewOrders.Visibility = Visibility.Hidden;
-                adminListView.ItemsSource = context.GetAllOrders(userSignedIn);
+                adminListView.ItemsSource = context.OrdersRepo.GetAllOrders(userSignedIn);
             }
         }
 

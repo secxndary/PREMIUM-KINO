@@ -16,7 +16,7 @@ namespace PREMIUM_KINO
 {
     public partial class AdminPanel : Page
     {
-        Repo context;
+        UnitOfWork context;
 
         public AdminPanel()
         {
@@ -25,8 +25,8 @@ namespace PREMIUM_KINO
             var customCursor = new Cursor(sri.Stream);
             Cursor = customCursor;
 
-            context = new Repo();
-            tableView.ItemsSource = context.GetAllMovies();
+            context = new UnitOfWork();
+            tableView.ItemsSource = context.MovieRepo.GetAllMovies();
         }
 
 
@@ -35,7 +35,7 @@ namespace PREMIUM_KINO
         {
             AddingFilm film = new AddingFilm();
             film.Show();
-            tableView.ItemsSource = context.GetAllMovies();
+            tableView.ItemsSource = context.MovieRepo.GetAllMovies();
         }
 
 
@@ -46,14 +46,14 @@ namespace PREMIUM_KINO
             {
                 RedactingFilm edit = new RedactingFilm();
                 var filmEdit = (Movie)tableView.SelectedItem;
-                var selectedMovieDB = context.GetMovie(filmEdit);
+                var selectedMovieDB = context.MovieRepo.GetMovie(filmEdit);
                 edit.filmName.Text = filmEdit.Title;
                 edit.filmDirector.Text = filmEdit.Director;
                 edit.genre.Text = filmEdit.Genre;
                 edit.rating.Text = filmEdit.Rating.ToString();
                 edit.duration.Text = filmEdit.Duration.ToString();
 
-                context.DeleteMovieAndSchedule(filmEdit, selectedMovieDB);
+                context.MovieRepo.DeleteMovieAndSchedule(filmEdit, selectedMovieDB);
 
                 if (tableView.SelectedItem != null)
                     if (edit.ShowDialog() == false)
@@ -66,8 +66,8 @@ namespace PREMIUM_KINO
                         filmEdit.Rating = float.Parse(edit.rating.Text);
                         filmEdit.Photo = edit.preview.Source.ToString();
 
-                        context.AddMovie(filmEdit);
-                        tableView.ItemsSource = context.GetAllMovies();
+                        context.MovieRepo.AddMovie(filmEdit);
+                        tableView.ItemsSource = context.MovieRepo.GetAllMovies();
                     }
             }
             catch
@@ -84,11 +84,11 @@ namespace PREMIUM_KINO
         {
             try
             {
-                var ret = context.DeleteMovieAndSchedule((Movie)tableView.SelectedItem, (Movie)tableView.SelectedItem);
+                var ret = context.MovieRepo.DeleteMovieAndSchedule((Movie)tableView.SelectedItem, (Movie)tableView.SelectedItem);
                 if (ret)
                 {
                     MessageBox.Show("Фильм удалён.", "Успешно!", MessageBoxButton.OK);
-                    tableView.ItemsSource = context.GetAllMovies();
+                    tableView.ItemsSource = context.MovieRepo.GetAllMovies();
                 }
                 else throw new Exception();
             }
@@ -103,7 +103,7 @@ namespace PREMIUM_KINO
         // Кнопка "Показать все фильмы"
         private void showButton_Click(object sender, RoutedEventArgs e)
         {
-            tableView.ItemsSource = context.GetAllMovies();
+            tableView.ItemsSource = context.MovieRepo.GetAllMovies();
         }
 
 
@@ -129,8 +129,8 @@ namespace PREMIUM_KINO
             ComboBoxItem selectedBoxItem = comboBoxFilterSelect.SelectedValue as ComboBoxItem;
             string selectedGenre = selectedBoxItem.Content.ToString();
             var regex = new Regex(@"(\w)*" + selectedGenre + @"(\w*)", RegexOptions.IgnoreCase);
-            var newList = new List<EFCore.Entities.Movie>();
-            var listOfFilms = context.GetAllMovies();
+            var newList = new List<Movie>();
+            var listOfFilms = context.MovieRepo.GetAllMovies();
 
             foreach (var movie in listOfFilms)
             {
@@ -150,7 +150,7 @@ namespace PREMIUM_KINO
         private void searchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var searchText = searchBox.Text;
-            var listOfFilms = context.GetAllMovies();
+            var listOfFilms = context.MovieRepo.GetAllMovies();
             var listSearch = new List<Movie>();
             var regex = new Regex(@"(\w)*" + searchText + @"(\w*)", RegexOptions.IgnoreCase);
 

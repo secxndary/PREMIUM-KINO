@@ -17,7 +17,7 @@ namespace PREMIUM_KINO
     {
         private bool styleCheck = false;
         private List<Movie> listOfFilms;
-        private Repo context;
+        private UnitOfWork context;
 
         public MainFrameUser()
         {
@@ -28,8 +28,8 @@ namespace PREMIUM_KINO
             App.LanguageChanged += languageChanged;
             CultureInfo currLang = App.Language;
 
-            context = new Repo();
-            listOfFilms = context.GetAllMovies();
+            context = new UnitOfWork();
+            listOfFilms = context.MovieRepo.GetAllMovies();
             mainFilmsListView.ItemsSource = listOfFilms;
         }
 
@@ -78,7 +78,7 @@ namespace PREMIUM_KINO
 
             NavigationService.Navigate((new Uri("./ReserveTicket.xaml", UriKind.Relative)));
             var selectedFilm = (sender as Button)?.DataContext as Movie;
-            var tickets = context.GetMovieTickets(selectedFilm);
+            var tickets = context.ScheduleRepo.GetMovieTickets(selectedFilm);
             Application.Current.Properties.Add("selectedFilm", selectedFilm);
         }
 

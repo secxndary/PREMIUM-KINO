@@ -8,14 +8,14 @@ namespace PREMIUM_KINO
     public partial class SetRating : Window
     {
         UserOrder order;
-        private Repo context;
+        private UnitOfWork context;
         private static Window thisWindow;
 
         public SetRating()
         {
             thisWindow = this;
             InitializeComponent();
-            context = new Repo();
+            context = new UnitOfWork();
             order = UserOrder.getInstance();
         }
 
@@ -25,7 +25,7 @@ namespace PREMIUM_KINO
             InitializeComponent();
             this.order = UserOrder.getInstance();
             this.order = order;
-            context = new Repo();
+            context = new UnitOfWork();
         }
 
 
@@ -45,7 +45,7 @@ namespace PREMIUM_KINO
                     MessageBox.Show("Пожалуйста, введите значение.", "Ошибка!", MessageBoxButton.OK);
                 else
                 {
-                    var res = context.UpdateRating(order, rate);
+                    var res = context.MovieRepo.UpdateRating(order, rate);
                     if (res)
                     {
                         MessageBox.Show($"Вы успешно оценили фильм на {rate}!", "Успешно!", MessageBoxButton.OK);

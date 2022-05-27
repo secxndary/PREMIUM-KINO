@@ -13,12 +13,12 @@ namespace PREMIUM_KINO
 {
     public partial class Registration: Page
     {
-        private Repo context;
+        private UnitOfWork context;
 
         public Registration()
         {
             InitializeComponent();
-            context = new Repo();
+            context = new UnitOfWork();
         }
 
 
@@ -36,7 +36,7 @@ namespace PREMIUM_KINO
             {
                 try
                 {
-                    var result = context.AddNewUser(Guid.NewGuid(), nameText.Text, surnameText.Text, loginText.Text,
+                    var result = context.UsersRepo.AddNewUser(Guid.NewGuid(), nameText.Text, surnameText.Text, loginText.Text,
                         SecureStringToString(passwordText.SecurePassword), emailText.Text, phoneText.Text);
                     if (result)
                     {

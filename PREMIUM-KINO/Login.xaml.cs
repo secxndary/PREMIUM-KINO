@@ -16,12 +16,12 @@ namespace PREMIUM_KINO
 {
     public partial class Login : Page
     {
-        private Repo context;
+        private UnitOfWork context;
 
         public Login() 
         {
             InitializeComponent();
-            context = new Repo();
+            context = new UnitOfWork();
         }
 
 
@@ -37,7 +37,7 @@ namespace PREMIUM_KINO
                 MessageBox.Show("Введите пароль!", "Ошибка!", MessageBoxButton.OK);
             else
             {
-                var user = context.GetUserByLogin(login);
+                var user = context.UsersRepo.GetUserByLogin(login);
                 if (user == null)
                     MessageBox.Show("Пользователь с таким логином отсутствует.", "Ошибка!", MessageBoxButton.OK);
                 else if (user.Password != password)

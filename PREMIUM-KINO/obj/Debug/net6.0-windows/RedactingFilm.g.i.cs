@@ -150,7 +150,7 @@ namespace PREMIUM_KINO {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/PREMIUM-KINO;V1.0.0.0;component/redactingfilm.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/PREMIUM-KINO;component/redactingfilm.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\RedactingFilm.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

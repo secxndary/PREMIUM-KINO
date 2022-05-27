@@ -11,7 +11,7 @@ namespace PREMIUM_KINO
     public partial class AddingFilm : Window
     {
         private OpenFileDialog openFileDialog;
-        private Repo context;
+        private UnitOfWork context;
         private static Window thisWindow;
 
         public AddingFilm()
@@ -21,7 +21,7 @@ namespace PREMIUM_KINO
             var sri = Application.GetResourceStream(new Uri("./Styles/arrow.cur", UriKind.Relative));
             var customCursor = new Cursor(sri.Stream);
             Cursor = customCursor;
-            context = new Repo();
+            context = new UnitOfWork();
         }
 
 
@@ -49,7 +49,7 @@ namespace PREMIUM_KINO
                 {
                     var movie = new EFCore.Entities.Movie(filmName.Text, filmDirector.Text,
                         genre.Text, durationInt, ratingFloat, openFileDialog.FileName);
-                    context.AddMovie(movie);
+                    context.MovieRepo.AddMovie(movie);
 
                     MessageBox.Show($"Название: {filmName.Text}\n" +
                         $"Режиссёр: {filmDirector.Text}\nЖанр: {genre.Text}" +

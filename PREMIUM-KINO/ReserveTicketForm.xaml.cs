@@ -10,7 +10,7 @@ namespace PREMIUM_KINO
 {
     public partial class ReserveTicketForm : Window
     {
-        private Repo context;
+        private UnitOfWork context;
         public Users userSignedIn;
         private Ticket selectedSchedule;
         private static Window thisWindow;
@@ -20,7 +20,7 @@ namespace PREMIUM_KINO
         {
             thisWindow = this;
             InitializeComponent();
-            context = new Repo();
+            context = new UnitOfWork();
             selectedSchedule = Ticket.getInstance();
             selectedSchedule = (Ticket)Application.Current.Properties["selectedSchedule"];
             Application.Current.Properties.Remove("selectedSchedule");
@@ -50,7 +50,7 @@ namespace PREMIUM_KINO
                 {
                     try
                     {
-                        context.AddOrder(Guid.NewGuid(), selectedSchedule, userSignedIn, countSeats);
+                        context.OrdersRepo.AddOrder(Guid.NewGuid(), selectedSchedule, userSignedIn, countSeats);
                         SendMail(countSeats);
                         MessageBox.Show("Вы успешно заказали билет!", "Успешно!", MessageBoxButton.OK);
                         this.Close();

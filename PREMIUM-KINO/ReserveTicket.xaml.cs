@@ -9,7 +9,7 @@ namespace PREMIUM_KINO
 {
     public partial class ReserveTicket : Page
     {
-        private Repo context;
+        private UnitOfWork context;
         public Users userSignedIn;
 
         public ReserveTicket()
@@ -18,11 +18,11 @@ namespace PREMIUM_KINO
             var sri = Application.GetResourceStream(new Uri("./Styles/arrow.cur", UriKind.Relative));
             var customCursor = new Cursor(sri.Stream);
             Cursor = customCursor;
-            context = new Repo();
+            context = new UnitOfWork();
 
             var selectedFilm = (Movie)Application.Current.Properties["selectedFilm"];
             Application.Current.Properties.Remove("selectedFilm");
-            var tickets = context.GetMovieTickets(selectedFilm);
+            var tickets = context.ScheduleRepo.GetMovieTickets(selectedFilm);
             OrderTicketListView.ItemsSource = tickets;
             DataContext = selectedFilm;
 

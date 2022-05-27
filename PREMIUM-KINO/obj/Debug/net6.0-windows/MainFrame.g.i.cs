@@ -126,7 +126,7 @@ namespace PREMIUM_KINO {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/PREMIUM-KINO;V1.0.0.0;component/mainframe.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/PREMIUM-KINO;component/mainframe.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\MainFrame.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

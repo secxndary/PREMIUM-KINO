@@ -13,7 +13,7 @@ namespace PREMIUM_KINO
     public partial class AddSchedule : Window
     {
         private Movie movie;
-        private Repo context;
+        private UnitOfWork context;
 
 
         public AddSchedule()
@@ -22,7 +22,7 @@ namespace PREMIUM_KINO
             var sri = Application.GetResourceStream(new Uri("./Styles/arrow.cur", UriKind.Relative));
             var customCursor = new Cursor(sri.Stream);
             Cursor = customCursor;
-            context = new Repo();
+            context = new UnitOfWork();
         }
 
         public AddSchedule(Movie movie)
@@ -33,7 +33,7 @@ namespace PREMIUM_KINO
             Cursor = customCursor;
             this.movie = movie;
             DataContext = movie;
-            context = new Repo();
+            context = new UnitOfWork();
         }
 
 
@@ -81,7 +81,7 @@ namespace PREMIUM_KINO
                     {
                         var s = string.Concat(date, " ", time);
                         DateTime dt = DateTime.ParseExact(s, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
-                        var check = context.AddSchedule(Guid.NewGuid(), movie.Id, seatsInt, dt);
+                        var check = context.ScheduleRepo.AddSchedule(Guid.NewGuid(), movie.Id, seatsInt, dt);
                         MessageBox.Show($"Вы успешно добавили расписание на фильм {movie.Title}!");
                         this.Close();
                     }
