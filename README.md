@@ -16,7 +16,7 @@
 
 ## Реализованные паттерны:
   1. Repository
-  2. UnitOfWork
+  2. Unit Of Work
   3. Command
   4. Singleton
 
